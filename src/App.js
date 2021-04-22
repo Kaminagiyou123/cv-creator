@@ -1,24 +1,29 @@
-import logo from './logo.svg';
-import './App.css';
+import Personal from "./Personal";
+import Education from "./Education";
+import Experience from "./Experience";
+import Others from "./Others";
+import { useProductsContext } from "./Context";
+import "./App.css";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 function App() {
+  const { experience, education, others } = useProductsContext();
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <main>
+      <h2>CV Editor</h2>
+      <Personal />
+      {education?.map((item) => (
+        <Education item={item} key={item.id} />
+      ))}
+
+      {experience?.map((item) => (
+        <Experience item={item} key={item.id} />
+      ))}
+
+      {others?.map((item) => (
+        <Others item={item} key={item.id} />
+      ))}
+    </main>
   );
 }
 
