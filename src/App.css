@@ -8,3 +8,19 @@ h2 {
   width: 80%;
   background: rgba(246, 140, 140, 0.6);
 }
+.heading-container {
+  margin-top: 50px;
+  text-align: center;
+}
+.education {
+  margin-top: 5px;
+  background-color: rgba(122, 220, 250, 0.6);
+}
+.btn-container {
+  width: 100px;
+  display: flex;
+  flex-direction: row;
+}
+.edu-btn {
+  margin: -10px 10px;
+}

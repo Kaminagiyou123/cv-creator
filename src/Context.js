@@ -17,7 +17,7 @@ const initialState = {
       company: "",
       city: "",
       title: "",
-      tasks: {},
+      tasks: "",
     },
   ],
   education: [
@@ -27,7 +27,7 @@ const initialState = {
       degree: "",
       graduation_time: "",
       city: "",
-      tasks: {},
+      tasks: "",
     },
   ],
   others: [
@@ -36,27 +36,6 @@ const initialState = {
       content: "",
     },
   ],
-  current_experience: {
-    id: null,
-    start_time: "",
-    end_time: "",
-    company: "",
-    city: "",
-    title: "",
-    tasks: {},
-  },
-  current_education: {
-    id: null,
-    school: "",
-    degree: "",
-    graduation_time: "",
-    city: "",
-    tasks: {},
-  },
-  current_other: {
-    id: null,
-    content: "",
-  },
 };
 
 const ProductsContext = React.createContext();
@@ -65,11 +44,23 @@ export const ProductsProvider = ({ children }) => {
   const changePersonalInfo = ({ name, value }) => {
     dispatch({ type: "CHANGE_CONTENT", payload: { name, value } });
   };
+  const changeEducationInfo = ({ id, name, value }) => {
+    dispatch({ type: "CHANGE_CONTENT_EDU", payload: { id, name, value } });
+  };
+  const removeEducationInfo = (id) => {
+    dispatch({ type: "REMOVE_CONTENT_EDU", payload: id });
+  };
+  const addEducationInfo = () => {
+    dispatch({ type: "ADD_CONTENT_EDU" });
+  };
   return (
     <ProductsContext.Provider
       value={{
         ...state,
         changePersonalInfo,
+        changeEducationInfo,
+        addEducationInfo,
+        removeEducationInfo,
       }}
     >
       {children}
