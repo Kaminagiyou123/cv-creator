@@ -52,6 +52,7 @@ h2 {
 }
 .cv-form-container {
   /* width: 70%; */
+  border: 2px solid lightgrey;
 }
 @media print {
   @page {
