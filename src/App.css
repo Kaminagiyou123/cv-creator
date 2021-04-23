@@ -24,3 +24,21 @@ h2 {
 .edu-btn {
   margin: -10px 10px;
 }
+.education-section {
+  margin: 30px 100px 50px 100px;
+}
+.education-section > h5 {
+  text-decoration: underline;
+}
+.education-form {
+  display: flex;
+  margin-top: 20px;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.header-container {
+  font-style: italic;
+}
+.container-right {
+  margin-top: 5px;
+}

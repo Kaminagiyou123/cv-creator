@@ -9,6 +9,7 @@ import CvForm from "./CvForm";
 import Button from "react-bootstrap/Button";
 function App() {
   const {
+    personal,
     experience,
     education,
     others,
@@ -17,7 +18,21 @@ function App() {
 
   return (
     <main>
-      <h2>CV Editor</h2>
+      <h2>
+        CV Editor
+        <Button
+          variant='link'
+          onClick={() => {
+            localStorage.setItem("personal", JSON.stringify(personal));
+            localStorage.setItem("education", JSON.stringify(education));
+            localStorage.setItem("experience", JSON.stringify(experience));
+            localStorage.setItem("others", JSON.stringify(others));
+          }}
+        >
+          Save
+        </Button>
+      </h2>
+
       <Personal />
       {education.length === 0 ? (
         <Button variant='info' onClick={() => addEducationInfo()}>
@@ -27,11 +42,9 @@ function App() {
       ) : (
         education?.map((item) => <Education item={item} />)
       )}
-
       {experience?.map((item) => (
         <Experience item={item} />
       ))}
-
       {others?.map((item) => (
         <Others item={item} />
       ))}

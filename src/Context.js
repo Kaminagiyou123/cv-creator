@@ -1,7 +1,11 @@
 import React, { useContext, useReducer } from "react";
 import reducer from "./reducer";
+const personal = localStorage.getItem("personal");
+const experience = localStorage.getItem("experience");
+const education = localStorage.getItem("education");
+const others = localStorage.getItem("others");
 const initialState = {
-  personal: {
+  personal: JSON.parse(personal) || {
     first_name: "",
     last_name: "",
     phone: "",
@@ -9,7 +13,7 @@ const initialState = {
     address: "",
     email: "",
   },
-  experience: [
+  experience: JSON.parse(experience) || [
     {
       id: 0,
       start_time: "",
@@ -20,7 +24,7 @@ const initialState = {
       tasks: "",
     },
   ],
-  education: [
+  education: JSON.parse(education) || [
     {
       id: 0,
       school: "",
@@ -30,13 +34,51 @@ const initialState = {
       tasks: "",
     },
   ],
-  others: [
+  others: JSON.parse(others) || [
     {
       id: 0,
       content: "",
     },
   ],
 };
+
+// const initialState = {
+//   personal: {
+//     first_name: "",
+//     last_name: "",
+//     phone: "",
+//     title: "",
+//     address: "",
+//     email: "",
+//   },
+//   experience: [
+//     {
+//       id: 0,
+//       start_time: "",
+//       end_time: "",
+//       company: "",
+//       city: "",
+//       title: "",
+//       tasks: "",
+//     },
+//   ],
+//   education: [
+//     {
+//       id: 0,
+//       school: "",
+//       degree: "",
+//       graduation_time: "",
+//       city: "",
+//       tasks: "",
+//     },
+//   ],
+//   others: [
+//     {
+//       id: 0,
+//       content: "",
+//     },
+//   ],
+// };
 
 const ProductsContext = React.createContext();
 export const ProductsProvider = ({ children }) => {
