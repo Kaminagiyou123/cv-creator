@@ -95,6 +95,16 @@ export const ProductsProvider = ({ children }) => {
   const addEducationInfo = () => {
     dispatch({ type: "ADD_CONTENT_EDU" });
   };
+
+  const changeExperienceInfo = ({ id, name, value }) => {
+    dispatch({ type: "CHANGE_CONTENT_EX", payload: { id, name, value } });
+  };
+  const removeExperience = (id) => {
+    dispatch({ type: "REMOVE_CONTENT_EX", payload: id });
+  };
+  const addExperienceInfo = () => {
+    dispatch({ type: "ADD_CONTENT_EX" });
+  };
   return (
     <ProductsContext.Provider
       value={{
@@ -103,6 +113,9 @@ export const ProductsProvider = ({ children }) => {
         changeEducationInfo,
         addEducationInfo,
         removeEducationInfo,
+        changeExperienceInfo,
+        removeExperience,
+        addExperienceInfo,
       }}
     >
       {children}

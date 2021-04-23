@@ -1,8 +1,9 @@
 import React from "react";
 import { useProductsContext } from "./Context";
 import EdcuationForm from "./EducationForm";
+import ExperienceForm from "./ExperienceForm";
 const CvForm = () => {
-  const { personal, education } = useProductsContext();
+  const { personal, education, experience } = useProductsContext();
   const { first_name, last_name, phone, title, email, address } = personal;
   return (
     <div>
@@ -17,6 +18,14 @@ const CvForm = () => {
         <div className='education-container'>
           {education?.map((item) => {
             return <EdcuationForm item={item} key={item.id} />;
+          })}
+        </div>
+      </div>
+      <div className='education-section'>
+        <h5>EXPERIENCE</h5>
+        <div className='education-container'>
+          {experience?.map((item) => {
+            return <ExperienceForm item={item} key={item.id} />;
           })}
         </div>
       </div>

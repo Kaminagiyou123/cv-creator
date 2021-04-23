@@ -42,3 +42,7 @@ h2 {
 .container-right {
   margin-top: 5px;
 }
+.experience {
+  margin-top: 5px;
+  background-color: rgba(74, 240, 135, 0.6);
+}
