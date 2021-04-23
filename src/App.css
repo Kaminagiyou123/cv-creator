@@ -46,3 +46,15 @@ h2 {
   margin-top: 5px;
   background-color: rgba(74, 240, 135, 0.6);
 }
+.others {
+  margin-top: 5px;
+  background-color: rgba(240, 192, 224, 0.6);
+}
+.cv-form-container {
+  /* width: 70%; */
+}
+@media print {
+  @page {
+    size: landscape;
+  }
+}

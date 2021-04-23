@@ -64,6 +64,31 @@ const reducer = (state, action) => {
     return { ...state, experience: [...newEx] };
   }
 
+  if (action.type === "CHANGE_CONTENT_OT") {
+    const { id, name, value } = action.payload;
+    let ex = state.others.filter((item) => item.id !== id);
+    let newItem = state.others.find((item) => item.id === id);
+    newItem = { ...newItem, [name]: value };
+    return {
+      ...state,
+      others: [...ex, newItem].sort((a, b) => {
+        return a.id - b.id;
+      }),
+    };
+  }
+
+  if (action.type === "REMOVE_CONTENT_OT") {
+    let newEx = state.others.filter((item) => item.id !== action.payload);
+    return { ...state, others: [...newEx] };
+  }
+  if (action.type === "ADD_CONTENT_OT") {
+    let newItem = {
+      id: state.others.length,
+      content: "",
+    };
+    let newEx = [...state.others, newItem];
+    return { ...state, others: [...newEx] };
+  }
   throw new Error(`No Matching "${action.type}" - action type`);
 };
 

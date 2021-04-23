@@ -5,8 +5,10 @@ import Others from "./Others";
 import { useProductsContext } from "./Context";
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
-import CvForm from "./CvForm";
+import { useReactToPrint } from "react-to-print";
 import Button from "react-bootstrap/Button";
+import CvForm from "./CvForm";
+import { useRef } from "react";
 function App() {
   const {
     personal,
@@ -15,6 +17,10 @@ function App() {
     others,
     addEducationInfo,
   } = useProductsContext();
+  const componentRef = useRef();
+  const handlePrint = useReactToPrint({
+    content: () => componentRef.current,
+  });
 
   return (
     <main>
@@ -49,7 +55,10 @@ function App() {
         <Others item={item} />
       ))}
       <div>
-        <CvForm />
+        <Button variant='link' onClick={handlePrint}>
+          Print This Out!
+        </Button>
+        <CvForm ref={componentRef} />
       </div>
     </main>
   );

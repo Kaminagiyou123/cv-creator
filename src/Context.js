@@ -1,5 +1,6 @@
-import React, { useContext, useReducer } from "react";
+import React, { useContext, useReducer, useRef } from "react";
 import reducer from "./reducer";
+
 const personal = localStorage.getItem("personal");
 const experience = localStorage.getItem("experience");
 const education = localStorage.getItem("education");
@@ -105,6 +106,16 @@ export const ProductsProvider = ({ children }) => {
   const addExperienceInfo = () => {
     dispatch({ type: "ADD_CONTENT_EX" });
   };
+
+  const changeOtherInfo = ({ id, name, value }) => {
+    dispatch({ type: "CHANGE_CONTENT_OT", payload: { id, name, value } });
+  };
+  const removeOther = (id) => {
+    dispatch({ type: "REMOVE_CONTENT_OT", payload: id });
+  };
+  const addOtherInfo = () => {
+    dispatch({ type: "ADD_CONTENT_OT" });
+  };
   return (
     <ProductsContext.Provider
       value={{
@@ -116,6 +127,9 @@ export const ProductsProvider = ({ children }) => {
         changeExperienceInfo,
         removeExperience,
         addExperienceInfo,
+        changeOtherInfo,
+        removeOther,
+        addOtherInfo,
       }}
     >
       {children}
