@@ -7,7 +7,7 @@ import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { useReactToPrint } from "react-to-print";
 import Button from "react-bootstrap/Button";
-import CvForm from "./CvForm";
+import ComponentToPrint from "./ComponentToPrint";
 import { useRef } from "react";
 function App() {
   const {
@@ -17,6 +17,7 @@ function App() {
     others,
     addEducationInfo,
   } = useProductsContext();
+
   const componentRef = useRef();
   const handlePrint = useReactToPrint({
     content: () => componentRef.current,
@@ -55,10 +56,10 @@ function App() {
         <Others item={item} />
       ))}
       <div>
-        <Button variant='link' onClick={handlePrint}>
-          Print This Out!
-        </Button>
-        <CvForm ref={componentRef} />
+        <div>
+          <ComponentToPrint ref={componentRef} />
+          <button onClick={handlePrint}>Print this out!</button>
+        </div>
       </div>
     </main>
   );
