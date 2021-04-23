@@ -52,10 +52,10 @@ h2 {
 }
 .cv-form-container {
   /* width: 70%; */
-  border: 2px solid lightgrey;
 }
 @media print {
   @page {
-    size: landscape;
+    size: 210 * 297;
+    margin: -20px;
   }
 }
